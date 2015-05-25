@@ -1,0 +1,15 @@
+wordpress:
+    image: wordpress
+    links:
+        - db:mysql
+    ports:
+        - 8080:80
+    volumes:
+        - www:/var/www/html
+
+db:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+    volumes:
+        - mysql:/var/lib/mysql
