@@ -1,7 +1,5 @@
-all: run
+all: build
 
-run:
-	sudo docker-compose up -d
-
-stop:
-	sudo docker-compose stop
+build:
+	sudo docker build -t shaneburkhart/wordpress -f Dockerfile.wordpress .
+	sudo docker push shaneburkhart/wordpress

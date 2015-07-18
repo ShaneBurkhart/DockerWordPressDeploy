@@ -1,0 +1,19 @@
+[Unit]
+Description=Wordpress.
+After=docker.service
+After=swapon.service
+After=mysql.service
+Wants=mysql.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+ExecStartPre=-/usr/bin/docker kill %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull shaneburkhart/wordpress
+ExecStart=/usr/bin/docker run -v /data/wordpress:/var/www/html -p 80:80 --link mysql.service:mysql --name %n shaneburkhart/wordpress 
+ExecStop=/usr/bin/docker stop %n
+
+[X-Fleet]
+Conflicts=%n
+MachineOf=mysql.service

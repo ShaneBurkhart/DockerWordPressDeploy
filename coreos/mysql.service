@@ -1,0 +1,17 @@
+[Unit]
+Description=Mysql database.
+After=docker.service
+After=swapon.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull mysql:5.6
+ExecStart=/usr/bin/docker run -v /data/mysql:/var/lib/mysql -e "MYSQL_ROOT_PASSWORD=password" --name %n mysql:5.6
+ExecStop=/usr/bin/docker stop %n
+
+[X-Fleet]
+Conflicts=%n
