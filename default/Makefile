@@ -5,3 +5,7 @@ run:
 
 stop:
 	sudo docker-compose stop
+
+status:
+	sudo docker-compose ps
+
