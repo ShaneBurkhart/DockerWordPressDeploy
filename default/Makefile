@@ -9,3 +9,8 @@ stop:
 status:
 	sudo docker-compose ps
 
+clean:
+	sudo docker rm $$(sudo docker ps -aq)
+
+logs:
+	sudo docker-compose logs
