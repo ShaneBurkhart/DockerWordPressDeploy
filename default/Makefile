@@ -1,16 +1,16 @@
 all: run
 
 run:
-	sudo docker-compose up -d
+	docker-compose up -d
 
 stop:
-	sudo docker-compose stop
+	docker-compose stop
 
 status:
-	sudo docker-compose ps
+	docker-compose ps
 
 clean:
-	sudo docker rm $$(sudo docker ps -aq)
+	docker rm $$(docker ps -aq)
 
 logs:
-	sudo docker-compose logs
+	docker-compose logs
