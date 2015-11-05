@@ -7,8 +7,8 @@ build:
 	sudo docker push shaneburkhart/mysql
 
 swap:
-	sudo fallocate -l 4G /swapfile
+	sudo fallocate -l 2G /swapfile
 	sudo chmod 600 /swapfile
 	sudo mkswap /swapfile
 	sudo swapon /swapfile
-	echo "/swapfile\tnone\tswap\tsw\t0\t0" > sudo tee -a /etc/fstab
+	echo -e "/swapfile\tnone\tswap\tsw\t0\t0" | sudo tee -a /etc/fstab
