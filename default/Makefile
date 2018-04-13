@@ -10,7 +10,7 @@ status:
 	docker-compose ps
 
 clean:
-	docker rm $$(docker ps -aq)
+	docker-compose rm
 
 logs:
 	docker-compose logs
